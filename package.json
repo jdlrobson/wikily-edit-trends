@@ -1,5 +1,6 @@
 {
   "name": "wikily-edit-trends",
+  "version": "1.0.0",
   "scripts": {},
   "dependencies": {
     "level": "^1.6.0",
