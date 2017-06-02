@@ -25,7 +25,7 @@ function saveTrending( cache ) {
 function retire( pages, ts ) {
 	var ref = new Date(ts);
 	function ageInMinutes( page ) {
-		return ( new Date( page.since ) - ref ) / (1000*60);
+		return ( ref - new Date( page.since ) ) / (1000*60);
 	}
 
 	return pages.filter( function ( page ) {
