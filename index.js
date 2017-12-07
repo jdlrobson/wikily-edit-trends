@@ -48,10 +48,11 @@ function dedupe( pages ) {
 	return newPages;
 }
 
-function updateTrending() {
+function updateTrending( url ) {
+	url = url || 'https://en.wikipedia.org/api/rest_v1/feed/trending/edits/24';
 	return new Promise( function ( resolve, reject ) {
 		getTrending().then( function ( cache ) {
-			fetch( 'https://en.wikipedia.org/api/rest_v1/feed/trending/edits/24' ).
+			fetch( url ).
 				then( function ( resp ) {
 					return resp.json();
 				} ).then( function ( newData ) {
