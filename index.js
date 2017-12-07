@@ -25,7 +25,8 @@ function saveTrending( cache ) {
 function retire( pages, ts ) {
 	var ref = new Date(ts);
 	function ageInMinutes( page ) {
-		return ( ref - new Date( page.since ) ) / (1000*60);
+		var since = page.since || page.start;
+		return ( ref - new Date( since ) ) / (1000*60);
 	}
 
 	return pages.filter( function ( page ) {
@@ -56,7 +57,7 @@ function updateTrending( url ) {
 				then( function ( resp ) {
 					return resp.json();
 				} ).then( function ( newData ) {
-					var ts = newData.timestamp;
+					var ts = newData.timestamp || newData.ts;
 
 					// Add all the new pages to our existing data structure
 					cache.pages = cache.pages.concat( newData.pages );
